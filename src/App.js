@@ -1,12 +1,18 @@
+import React from "react";
+import Home from "./Home";
+import Sidebar from "./Sidebar";
+import Submenu from "./Submenu";
+import Navbar from "./Navbar";
 
-import './App.css';
-
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>PROJECT 2</h1>
-    </div>
-  );
+  <>
+    <Navbar/>
+    <Home/>
+    <Sidebar/>
+    <Submenu/>
+  </>
+  )
 }
 
 export default App;

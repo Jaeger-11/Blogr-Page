@@ -1,44 +1,49 @@
-import React, {useState} from 'react';
-import './App.css'
+import React, {useEffect, useState} from 'react';
+import { useGlobalContext } from './context';
+import data from './data'
+import logo from './images/logo.svg';
+import imageTwo from './images/illustration-editor-mobile.svg';
+import imageThree from './images/illustration-phones.svg';
+import imagefour from './images/illustration-laptop-mobile.svg';
 
 const Home = () => {
+    const {closeSubmenu} = useGlobalContext();
+    const [width, setWidth] = useState()
+    const checkWidth = () => {
+        setWidth(window.innerWidth)
+    }
+
+    useEffect(() =>{
+        window.addEventListener('resize', checkWidth)
+        console.log(width)
+        return () => {
+            window.removeEventListener('resize', checkWidth)
+        }
+    })
+
+    const bgfill = {
+        background: 'linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))'
+    }
     return(
-        <div className='container'>
-            <header className='first-box'>
-                <nav>
-                    <h2 className='logo'>Blogr</h2>
-                    <section className='nav-pack'>
-                        <ul  className='nav-ul'>
-                            <li>Product</li>
-                            <li>Company</li>
-                            <li>Connect
-                                {/* <ul>
-                                    <li>Contact</li>
-                                    <li>Newsletter</li>
-                                    <li>LinkedIn</li>
-                                </ul> */}
-                            </li>
-                        </ul>
-                        <div className='nav-clicks'>
-                            <p>Login</p>
-                            <button>Sign Up</button>
-                        </div>
-                    </section>
-                </nav>
-                <section>
-                    <h1>A modern publishing platform</h1>
-                    <p>Grow your audience and build your online brand</p>
-                    <div>
-                        <button>Start For Free</button>
-                        <button>Learn More</button>
-                    </div>
-                </section>
-            </header>
-            
-            <div className='second-box'>
-                <h2>Designed for the future</h2>
-                <section>
-                    <article>
+    <div className='home'>
+        <div className='container ' style={bgfill} >
+            <section className='first-section'>
+                <h1>A modern publishing platform</h1>
+                <p>Grow your audience and build your online brand</p>
+                <div>
+                    <button className='FSBTN1'>Start For Free</button>
+                    <button className='FSBTN2'>Learn More</button>
+                </div>
+            </section>
+        </div>
+        <div className='second-box'>
+            <h2>Designed for the future</h2>
+            <div className='SBGRID'>
+                <div className='image-box'>
+                    <img src={imageTwo} alt='img-two' className='image-two'/>
+                </div>
+                <section className='second-section'>
+                    <article className='SSART'>
                         <h3>Introducing an extensible editor</h3>
                         <p> 
                             Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content. 
@@ -48,7 +53,7 @@ const Home = () => {
                         </p>
                     </article>
 
-                    <article>
+                    <article className='SSART'>
                         <h3>Robust content management</h3>
                         <p>
                             Flexible content management enables users to easily move through posts. Increase the usability of your blog 
@@ -56,15 +61,14 @@ const Home = () => {
                         </p>
                     </article>
                 </section>
-                <aside>
-                    <img/>
-                </aside>
             </div>
+        </div>
 
-            <div className='third-box'>
-                <aside>
-                    <img/>
-                </aside>
+        <div className='third-box'>
+            <div className='TBGRID'>
+                
+                    <img src={imageThree} alt="img-three" className = 'image-three'/>
+                
                 <article>
                     <h2>State of the Art Infrastructure</h2>
                     <p>
@@ -73,8 +77,12 @@ const Home = () => {
                     </p>
                 </article>
             </div>
-
-            <div className='fourth-box'>
+        </div>
+        <div className='fourth-box'>
+            <div className='FBGRID'>
+                <aside>
+                    <img src={imagefour} alt='img-four' className= 'image-four' />
+                </aside>
                 <section>
                     <article>
                         <h3>Free, open, simple</h3>
@@ -93,39 +101,21 @@ const Home = () => {
                         </p>
                     </article>
                 </section>
-                <aside>
-                    <img/>
-                </aside>
-            </div>
-
-            <footer>
-                <h2>Blogr</h2>
-
-                <ul>
-                    <li className='first-li'>Product</li>
-                    <li>Overview</li>
-                    <li>Pricing</li>
-                    <li>Marketplace</li>
-                    <li>Features</li>
-                    <li>Integrations</li>
-                </ul>
-
-                <ul>
-                    <li className='first-li'>Company</li>
-                    <li>About</li>
-                    <li>Team</li>
-                    <li>Blog</li>
-                    <li>Careers</li>
-                </ul>
-
-                <ul>
-                    <li className='first-li'>Connect</li>
-                    <li>Contact</li>
-                    <li>Newsletter</li>
-                    <li>LinkedIn</li>
-                </ul>
-            </footer>
+            </div>`
         </div>
+        <footer>
+            <img src={logo} alt='logo' className='footer-logo'/>
+            {data.map((item, index) => {
+                const {page, links} = item;
+                return( <ul key={index}>
+                    <li className='first-li'>{page}</li>
+                    {links.map((link, index) =>{ return <li key={index}>{link}</li>})}
+                </ul>
+                )
+            })}
+                
+        </footer>
+    </div>
     )
 }
 
