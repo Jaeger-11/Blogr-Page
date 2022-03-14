@@ -434,17 +434,23 @@ hr{
 
 .submenu{
   background-color: white;
-  width: max-content;
-  padding: 10px;
+  width: 150px;
+  padding:20px 10px;
   position: absolute;
   top: 4rem;
   left: 50%;
   transform: translateX(-50%);
   visibility: hidden;
   display: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 3px 8px;
 }
 
 .subshow{
   visibility: visible;
   display: block;
+}
+
+.submenu p{
+  margin: 8px;
 }

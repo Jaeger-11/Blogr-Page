@@ -5,17 +5,26 @@ import logo from './images/logo.svg';
 import imageTwo from './images/illustration-editor-mobile.svg';
 import imageThree from './images/illustration-phones.svg';
 import imagefour from './images/illustration-laptop-mobile.svg';
+//Desktop Images
+import desklaptop from './images/illustration-laptop-desktop.svg'
+import deskeditor from './images/illustration-editor-desktop.svg'
 
 const Home = () => {
     const {closeSubmenu} = useGlobalContext();
-    const [width, setWidth] = useState()
+    const [width, setWidth] = useState();
+    const [desktop, setDesktop] = useState(true)
     const checkWidth = () => {
         setWidth(window.innerWidth)
     }
 
     useEffect(() =>{
         window.addEventListener('resize', checkWidth)
-        console.log(width)
+        if(width > 500){
+            setDesktop(true)
+        } else{
+            setDesktop(false)
+        }
+        console.log(width, desktop)
         return () => {
             window.removeEventListener('resize', checkWidth)
         }
@@ -25,7 +34,7 @@ const Home = () => {
         background: 'linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))'
     }
     return(
-    <div className='home'>
+    <div className='home' onClick={closeSubmenu}>
         <div className='container ' style={bgfill} >
             <section className='first-section'>
                 <h1>A modern publishing platform</h1>
@@ -40,7 +49,7 @@ const Home = () => {
             <h2>Designed for the future</h2>
             <div className='SBGRID'>
                 <div className='image-box'>
-                    <img src={imageTwo} alt='img-two' className='image-two'/>
+                    <img src={desktop ? deskeditor : imageTwo} alt='img-two' className='image-two'/>
                 </div>
                 <section className='second-section'>
                     <article className='SSART'>
@@ -81,7 +90,7 @@ const Home = () => {
         <div className='fourth-box'>
             <div className='FBGRID'>
                 <aside>
-                    <img src={imagefour} alt='img-four' className= 'image-four' />
+                    <img src={desktop ? desklaptop : imagefour} alt='img-four' className= 'image-four' />
                 </aside>
                 <section>
                     <article>
