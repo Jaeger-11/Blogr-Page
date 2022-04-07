@@ -12,12 +12,13 @@ import deskeditor from './images/illustration-editor-desktop.svg'
 const Home = () => {
     const {closeSubmenu} = useGlobalContext();
     const [width, setWidth] = useState();
-    const [desktop, setDesktop] = useState(true)
+    const [desktop, setDesktop] = useState()
     const checkWidth = () => {
         setWidth(window.innerWidth)
     }
 
     useEffect(() =>{
+        checkWidth()
         window.addEventListener('resize', checkWidth)
         if(width > 500){
             setDesktop(true)
@@ -28,7 +29,7 @@ const Home = () => {
         return () => {
             window.removeEventListener('resize', checkWidth)
         }
-    })
+    }, [width, desktop])
 
     const bgfill = {
         background: 'linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))'
@@ -45,15 +46,17 @@ const Home = () => {
                 </div>
             </section>
         </div>
+
+        <div className='others'>
         <div className='second-box'>
-            <h2>Designed for the future</h2>
+            <h1>Designed for the future</h1>
             <div className='SBGRID'>
-                <div className='image-box'>
+                
                     <img src={desktop ? deskeditor : imageTwo} alt='img-two' className='image-two'/>
-                </div>
+                
                 <section className='second-section'>
                     <article className='SSART'>
-                        <h3>Introducing an extensible editor</h3>
+                        <h2>Introducing an extensible editor</h2>
                         <p> 
                             Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content. 
                             The editor supports management of multiple blogs and allows easy manipulation of embeds such as images, 
@@ -63,7 +66,7 @@ const Home = () => {
                     </article>
 
                     <article className='SSART'>
-                        <h3>Robust content management</h3>
+                        <h2>Robust content management</h2>
                         <p>
                             Flexible content management enables users to easily move through posts. Increase the usability of your blog 
                             by adding customized categories, sections, format, or flow. With this functionality, you are in full control.
@@ -74,18 +77,17 @@ const Home = () => {
         </div>
 
         <div className='third-box'>
-            <div className='TBGRID'>
-                
-                    <img src={imageThree} alt="img-three" className = 'image-three'/>
+
+                <img src={imageThree} alt="img-three" className = 'image-three'/>
                 
                 <article>
-                    <h2>State of the Art Infrastructure</h2>
+                    <h1>State of the Art Infrastructure</h1>
                     <p>
                     With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. 
                     This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.
                     </p>
                 </article>
-            </div>
+        
         </div>
         <div className='fourth-box'>
             <div className='FBGRID'>
@@ -94,7 +96,7 @@ const Home = () => {
                 </aside>
                 <section>
                     <article>
-                        <h3>Free, open, simple</h3>
+                        <h2>Free, open, simple</h2>
                         <p>
                         Blogr is a free and open source application backed by a large community of helpful developers. It supports 
                         features such as code syntax highlighting, RSS feeds, social media integration, third-party commenting tools, 
@@ -103,7 +105,7 @@ const Home = () => {
                     </article>
 
                     <article>
-                        <h3>Powerful tooling</h3>
+                        <h2>Powerful tooling</h2>
                         <p>
                         Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a breeze, but
                         capable of producing even the most complicated sites.
@@ -112,6 +114,8 @@ const Home = () => {
                 </section>
             </div>`
         </div>
+        </div>
+        
         <footer>
             <img src={logo} alt='logo' className='footer-logo'/>
             {data.map((item, index) => {
@@ -122,7 +126,6 @@ const Home = () => {
                 </ul>
                 )
             })}
-                
         </footer>
     </div>
     )
