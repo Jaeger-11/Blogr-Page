@@ -5,8 +5,8 @@ const Accordion = ({page, links, index}) => {
     const [showInfo, setShowInfo] = useState(false)
 
     return (<section>
-        <p className="sidepage" onClick={() => setShowInfo(!showInfo)} key={index}>
-            {page} {showInfo ? <FaChevronUp className="angle"/> : <FaChevronDown className="angle"/>} 
+        <p className={`sidepage ${showInfo && 'active'}`} onClick={() => setShowInfo(!showInfo)} key={index}>
+            {page} {showInfo ? <FaChevronUp className="sideangle"/> : <FaChevronDown className="sideangle"/>} 
         </p>
         { showInfo && <div className="sidelinks">
             {links.map((link, index) => {

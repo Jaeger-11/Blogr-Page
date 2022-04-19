@@ -5,6 +5,9 @@ import logo from './images/logo.svg';
 import imageTwo from './images/illustration-editor-mobile.svg';
 import imageThree from './images/illustration-phones.svg';
 import imagefour from './images/illustration-laptop-mobile.svg';
+// Background images
+import deskback from './images/bg-pattern-intro-desktop.svg';
+// import mobback from './images'
 //Desktop Images
 import desklaptop from './images/illustration-laptop-desktop.svg'
 import deskeditor from './images/illustration-editor-desktop.svg'
@@ -31,12 +34,9 @@ const Home = () => {
         }
     }, [width, desktop])
 
-    const bgfill = {
-        background: 'linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%))'
-    }
     return(
-    <div className='home' onClick={closeSubmenu}>
-        <div className='container ' style={bgfill} >
+    <div className='home' onMouseOver={closeSubmenu}>
+        <div className='container' >
             <section className='first-section'>
                 <h1>A modern publishing platform</h1>
                 <p>Grow your audience and build your online brand</p>
@@ -51,8 +51,7 @@ const Home = () => {
         <div className='second-box'>
             <h1>Designed for the future</h1>
             <div className='SBGRID'>
-                
-                    <img src={desktop ? deskeditor : imageTwo} alt='img-two' className='image-two'/>
+                <img src={desktop ? deskeditor : imageTwo} alt='img-two' className='image-two'/>
                 
                 <section className='second-section'>
                     <article className='SSART'>
@@ -112,7 +111,7 @@ const Home = () => {
                         </p>
                     </article>
                 </section>
-            </div>`
+            </div>
         </div>
         </div>
         

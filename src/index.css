@@ -161,8 +161,11 @@ button{
   justify-items: center;
   border-radius: 0 0 0 80px;
   padding-top: 50px;
-  background-image: url(images/bg-pattern-intro-mobile.svg);
-  background-size: 160%;
+  background-repeat: no-repeat;
+  background-size: 300%;
+  background-position-y: 25%;
+  background-position-x: 35%;
+  background-image:url(images/bg-pattern-intro-mobile.svg) ,linear-gradient(90deg, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
 }
 .first-section{
   text-align: center;
@@ -174,6 +177,7 @@ button{
   font-size: 2rem;
   color: white;
   margin: 2rem auto;
+  line-height: 2rem;
 }
 
 .first-section p{
@@ -267,7 +271,7 @@ button{
   margin-top: 10rem ;
   color: white;
   border-radius: 0 100px 0 100px;
-  background-color: hsl(240, 10%, 16%);
+  background-color: hsl(237, 23%, 32%);
   height: max-content;
   background-size: 150%;
   background-repeat: no-repeat;
@@ -324,6 +328,7 @@ footer{
   border-radius: 0px 120px 0 0;
   padding: 30px;
   display: grid;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .footer-logo{
@@ -343,7 +348,8 @@ footer li{
 
 .first-li{
   margin: 1.5rem 0 1rem 0;
-  font-weight: bold;
+  font-weight: 500;
+  color: white;
 }
 
 /* ADJUSTMENT FOR BIGGER WIDTH */
@@ -351,8 +357,16 @@ footer li{
   body{
     line-height: 1.8rem;
   }
+  .container{
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position-y: 50%;
+    background-position-x: 30%;
+    background-image: url(images/bg-pattern-intro-desktop.svg),linear-gradient(50deg, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+  }
   .first-section h1{
     font-size: 4rem;
+    line-height: 4rem;
   }
   .SBGRID, .FBGRID{
     display: grid;
@@ -382,33 +396,32 @@ footer li{
     height: 390px;
     margin: 0;
     background-repeat: no-repeat;
-    background-size: 80%;
+    background-size: 100%;
     background-position-y: 85%;
     background-position-x: -100%;
-    background-image: url(images/bg-pattern-circles.svg);
+    background-image: url(images/bg-pattern-circles.svg), linear-gradient(to right, hsl(237, 17%, 21%),hsl(237, 23%, 32%));
   }
 
   .third-box article{
-    margin-right: 20%;
+    margin: auto;
     text-align: left;
     height: max-content;
-    margin-top: 15%;
     color: white;
     padding: 0;
     top: auto;
   }
 
   .third-box article h1{
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 300;
   }
   
   .image-three{
     top: -12%;
-    left: 10%;
+    left: 1rem;
     position: relative;
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
   }
 
   .image-four{
@@ -442,6 +455,34 @@ footer li{
   }
 }
 
+@media screen and (max-width: 750px){
+  .second-section{
+    padding: 0;
+    margin: 0;
+    line-height: 1.5rem;
+  }
+  .second-section article p{
+    line-height: 1.5rem;
+  }
+  .third-box article{
+    line-height: 1.5rem;
+    margin-right: 0;
+  }
+  .third-box article h1{
+    font-size: 1.5rem;
+  }
+  .image-three{
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 900px){
+  .third-box article{
+    margin-top: 15%;
+    margin-right: 2.5rem;
+  }
+}
 /* STYLING OF SIDEBAR */
 .sidebar-wrapper{
   position: fixed;
@@ -458,6 +499,7 @@ footer li{
   background-color: white;
   border-radius: 5px;
   text-align: center;
+  font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -473,13 +515,17 @@ footer li{
   margin: 20px auto;
   width: max-content;
 }
+.active{
+  color: hsl(207, 13%, 34%);
+}
 .sidelinks{
-  width: 60%;
+  width: 90%;
   height: max-content;
-  background-color: gray;
+  background-color: rgb(241, 234, 234);
   padding: 10px;
   margin: auto;
   border-radius: 5px;
+  color: hsl(207, 13%, 34%);
 }
 .link{
   margin: 10px auto;
@@ -493,9 +539,15 @@ footer li{
   width: 100px;
   border-radius: 30px;
   border: transparent ;
+  color: white;
 }
 hr{
   margin-top: 10px;
+}
+.sideangle{
+  color: hsl(353, 100%, 62%);
+  height: 10px;
+  width: 15px;
 }
 
 /* styling of submenu */
@@ -533,11 +585,11 @@ hr{
   width: 150px;
   padding:20px 10px;
   position: absolute;
-  top: 4rem;
-  left: 50%;
+  height: max-content;
   transform: translateX(-50%);
   visibility: hidden;
   display: none;
+  color: black;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.3) 2px 3px 8px;
 }
